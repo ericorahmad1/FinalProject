@@ -1,0 +1,59 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = 'Erico Rahmad — Portfolio',
+  description = 'Portfolio pribadi Erico Rahmad — proyek, keahlian, dan kontak. Final Project Hacktiv8 X DevC.',
+} = Astro.props;
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const favicon = `${base}/favicon.svg`;
+const ogImage = `${base}/og-image.svg`;
+const canonical = new URL(Astro.url.pathname, Astro.site).href;
+
+// Content-Security-Policy is generated automatically by Astro (see security.csp
+// in astro.config.mjs), which hashes this inline script and the bundled ones.
+const themeScript =
+  "document.documentElement.classList.toggle('dark',(localStorage.getItem('theme')??(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'))==='dark')";
+---
+
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" type="image/svg+xml" href={favicon} />
+
+    <!-- Open Graph / Twitter -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- Set theme before first paint to avoid a flash of the wrong theme -->
+    <script is:inline set:html={themeScript} />
+  </head>
+  <body
+    class="bg-white text-slate-700 antialiased selection:bg-brand-200 selection:text-brand-900 dark:bg-slate-950 dark:text-slate-300"
+  >
+    <a
+      href="#home"
+      class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-lg focus:bg-brand-600 focus:px-4 focus:py-2 focus:text-white"
+    >
+      Lewati ke konten
+    </a>
+    <slot />
+  </body>
+</html>

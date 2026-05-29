@@ -1,0 +1,59 @@
+---
+import { Image } from 'astro:assets';
+import profile from '../assets/profile.jpg';
+
+const skills = [
+  'HTML5',
+  'CSS3',
+  'JavaScript',
+  'TypeScript',
+  'Astro',
+  'Tailwind CSS',
+  'Git',
+  'Responsive Design',
+];
+---
+
+<section id="about" class="scroll-mt-20 bg-white py-24 dark:bg-slate-950">
+  <div class="mx-auto max-w-6xl px-4 sm:px-6">
+    <h2 class="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl dark:text-white">
+      Tentang Saya
+    </h2>
+    <div class="mt-4 h-1 w-16 rounded-full bg-brand-600"></div>
+
+    <div class="mt-12 grid items-center gap-12 md:grid-cols-[280px_1fr]">
+      <div class="mx-auto md:mx-0">
+        <Image
+          src={profile}
+          alt="Foto Erico Rahmad"
+          width={280}
+          height={280}
+          format="webp"
+          class="h-64 w-64 rounded-2xl object-cover shadow-xl ring-1 ring-slate-200 md:h-72 md:w-72 dark:ring-slate-800"
+        />
+      </div>
+
+      <div>
+        <p class="text-lg leading-relaxed text-slate-600 dark:text-slate-300">
+          Saya orang biasa yang senang belajar dan membangun untuk web. Halaman ini
+          adalah final project JavaScript Development dari Hacktiv8 X DevC, kini
+          dibangun ulang menjadi situs single-page modern dengan Astro dan Tailwind CSS.
+        </p>
+        <p class="mt-4 text-lg leading-relaxed text-slate-600 dark:text-slate-300">
+          Hobi: Eat, Pray, C0de.
+        </p>
+
+        <h3 class="mt-8 text-sm font-semibold uppercase tracking-widest text-slate-500 dark:text-slate-400">
+          Keahlian
+        </h3>
+        <ul class="mt-4 flex flex-wrap gap-2">
+          {skills.map((skill) => (
+            <li class="rounded-full bg-brand-50 px-4 py-1.5 text-sm font-medium text-brand-700 ring-1 ring-brand-200 dark:bg-brand-900/30 dark:text-brand-300 dark:ring-brand-800">
+              {skill}
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
