@@ -37,4 +37,3 @@ There is no test suite or linter. Verify changes by building and checking the pa
 
 - `src/data/projects.ts` has sample projects + social URLs — replace with real ones.
 - `ContactForm.astro` posts to `https://formspree.io/f/YOUR_FORM_ID` — replace with a real Formspree **form ID** (never a raw email address).
-- `public/og-image.svg` is an SVG placeholder; most social scrapers want a 1200×630 PNG/JPG.
